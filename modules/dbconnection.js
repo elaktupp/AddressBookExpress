@@ -12,38 +12,81 @@ mongoose.connect(uri,function(err,res) {
 
 var Schema = mongoose.Schema;
 
-var bookItem = new Schema({
-    name:{type:String,index:{unique:true}},
-    address:String,
-    email:String,
-    phonenumber:String,
-    birthday:Date,
-    notes:String
-});
-
-var AddressBook = mongoose.model("AddressBook", bookItem);
-
 var bookUser = new Schema({
     name:{type:String,index:{unique:true}},
-    password:String
+    password:String,
+    email:String
 });
 
 var BookUser = mongoose.model("BookUser", bookUser);
+
+// TODO: If the Address Book can have several users
+// but each address items must have unique 'name'
+// what happens when two users have address item with
+// same 'name'...?
+
+// The last one 'user:String' must be bookUser.name
+// with that we can find items that belong to that user.
+
+var bookItem = new Schema({
+    name:{type:String,index:{unique:true}},
+    password:String,
+    email:String,
+    phonenumber:String,
+    birthday:Date,
+    notes:String,
+    user:String
+});
+
+var BookItem = mongoose.model("AddressBook", bookItem);
 
 // User handling
 
 exports.addBookUser = function(req,res) {
     
-    // TODO
+    console.log("*** addBookUser");
     console.log(req.body);
-    res.redirect('/');
+    // NOTE: Body content names come from register.jade, so they
+    // do not need to be the same like they are now
+    var temp = new BookUser({
+        name:req.body.name,
+        password:req.body.password,
+        email:req.body.email,
+    });
+    
+    temp.save(function(err) {
+        if (err) {
+            // see views/error.jade
+            res.render('dberror',{db_error:err});
+        } else {
+            res.redirect('/');
+        }
+    });
 };
 
 // Book handling
 
 exports.addBookItem = function(req,res) {
     
-    // TODO
     console.log(req.body);
-    res.redirect('/');
+    // NOTE: Body content names come from address.jade, so they
+    // do not need to be the same like they are now
+    var temp = new BookItem({
+        name:req.body.name,
+        address:req.body.address,
+        email:req.body.email,
+        phonenumber:req.body.phonenumber,
+        birthday:new Date(req.body.birthday),
+        notes:req.body.notes,
+        user:req.body.user
+    });
+    
+    temp.save(function(err) {
+        if (err) {
+            // see views/error.jade
+            res.render('dberror',{db_error:err});
+        } else {
+            res.redirect('/');
+        }
+    });
 };

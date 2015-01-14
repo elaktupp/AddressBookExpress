@@ -2,4 +2,8 @@ extends layout
 
 block content
   h1 Address Book
+  each item in user_items
+    li #{item.name}
+  br
+  a(href="/add_address") Add new address book item
   

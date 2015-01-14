@@ -8,7 +8,7 @@ block content
     });
   div(class="container")
     h2 New addres
-    form(action="/add_address",method="post")
+    form(action="/add_address",method="post",data-ajax="false")
       label Name
       input(type="text",name="name",placeholder="full name")
       label Street address
@@ -19,5 +19,7 @@ block content
       input(type="text",name="phonenumber",placeholder="+358(0)551234567")
       label Birthday
       input(type="text",name="birdthday",id="datepicker")
+      label Notes
+      textarea(name="notes",placeholder="additional information")
       br
       input(type="submit",value="SAVE")

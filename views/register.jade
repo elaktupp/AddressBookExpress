@@ -3,11 +3,13 @@ extends layout
 block content
   div(class="container")
     h2 Registration
-    form(action="/register_user",method="post")
+    form(action="/register_user",method="post",data-ajax="false")
       label User name
-      input(type="text",placeholder="username")
+      input(type="text",name="name",placeholder="username")
+      label Password
+      input(type="password",name="password",placeholder="username")
       label E-mail address
-      input(type="email",placeholder="your@email.net")
+      input(type="email",name="email",placeholder="your@email.net")
       br
       input(type="submit",value="REGISTER")
     
