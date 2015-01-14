@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  // This is jQuery datepicker
+  script().
+    $(function() {
+      $( "#datepicker" ).datepicker({dateFormat: "DD dd. MM yy"});
+    });
+  div(class="container")
+    h2 New addres
+    form(action="/add_address",method="post")
+      label Name
+      input(type="text",name="name",placeholder="full name")
+      label Street address
+      input(type="text",name="address",placeholder="Mystreet 1")
+      label E-mail address
+      input(type="email",name="email",placeholder="your@email.net")
+      label Phone number
+      input(type="text",name="phonenumber",placeholder="+358(0)551234567")
+      label Birthday
+      input(type="text",name="birdthday",id="datepicker")
+      br
+      input(type="submit",value="SAVE")

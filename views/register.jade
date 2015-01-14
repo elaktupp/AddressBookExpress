@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div(class="container")
+    h2 Registration
+    form(action="/register_user",method="post")
+      label User name
+      input(type="text",placeholder="username")
+      label E-mail address
+      input(type="email",placeholder="your@email.net")
+      br
+      input(type="submit",value="REGISTER")
+    
