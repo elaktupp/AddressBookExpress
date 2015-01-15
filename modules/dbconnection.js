@@ -64,6 +64,28 @@ exports.addBookUser = function(req,res) {
     });
 };
 
+exports.validateUser = function(username) {
+    // Fetch data from the database
+    BookUser.find({name: username},function(err,data) {
+        // Then render error or data
+        if (err) {
+            res.render('dberror',{db_error:err});
+        } else {
+            console.log(data);
+            if (data.name != undefined) {
+                console.log("validateUser TRUE");
+                return true;
+            } else {
+                console.log("validateUser FALSE");
+                return false;
+            }
+        }
+    });
+    
+    console.log("validateUser FALSE");
+    return false;
+};
+
 // Book handling
 
 exports.addBookItem = function(req,res) {

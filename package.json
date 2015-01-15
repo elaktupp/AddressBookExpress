@@ -15,6 +15,7 @@
     "jade": "~1.8.2",
     "stylus": "0.42.3",
     "mongoose": "3.8.x",
-    "mongodb": "1.4.x"
+    "mongodb": "1.4.x",
+    "express-session": "1.10.x"
   }
 }

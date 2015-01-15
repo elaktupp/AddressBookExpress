@@ -9,8 +9,11 @@ var bodyParser = require('body-parser');
 var db = require('./modules/dbconnection');
 
 var routes = require('./routes/index');
-
+// session is used to secure the pages
+//var session = require('express-session');
 var app = express();
+// session is used to secure the pages
+//app.use(session({secret:'h43jhnf34q384fh3kl0p034'}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +29,7 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/login',routes.loginUser);
 app.use('/register_user',db.addBookUser);
 app.use('/add_address',db.addBookItem);
 
