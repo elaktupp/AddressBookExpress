@@ -1,9 +1,18 @@
 extends layout
 
 block content
-  h1 Address Book #{username}
-//  each item in user_items
-//    li #{item.name}
-  br
-  a(href="/add_address") Add new address book item
+  div(class="container")
+    h1 Address Book 
+    if db_addresses.length == 0
+      p  no addresses found
+    else
+      input(type='text',data-type='search',id='test')
+      ul(data-role="listview",data-filter='true',data-input='#test')
+        each address in db_addresses
+          li
+            a(href="/details?id=#{address._id}") #{address.name}
+    br
+    a(href="/address") Add new address
+    br
+    a(href="/logout") Logout
   

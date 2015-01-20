@@ -2,28 +2,29 @@ var express = require('express');
 var router = express.Router();
 
 // Database for users and addresses
-var db = require('../modules/dbconnection');
+var db = require('./dbconnection');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'ABE' });
+    db.connectToDb(req,res);
 });
 
-router.get('/register', function(req,res) {
-    res.render("register", {});
-});
+router.register = function(req,res) {
+    res.render('register', {error_msg:'', username:'', password:'', email:''});
+};
 
-router.loginUser = function(req,res) {
-// TODO: Validate the user
-    console.log(req);
-    if (db.validateUser(req.body.name) === false) {
-        // Invalid user or password
-// TODO: jQuery popup "Incorrect username or password" would be nice
-        res.redirect('/');
+router.address = function(req,res) {
+    if (req.session.loggedIn) {
+        res.render('address', {});
     } else {
-// TODO: Fetch addresses belonging to the user
-        res.render("addresslist", req.body.name);
+        res.render('index', {error: 'Please login first!'});
     }
 };
+
+router.logout = function(req,res) {
+
+    req.session.destroy();
+    res.render('index', {title: 'Address Book login', error: ''});
+}
 
 module.exports = router;

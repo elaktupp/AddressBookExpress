@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  div(class="container")
+    h1 Address Book
+    h3 #{name}
+      ul(class="addressdata")
+        li #{address}
+        li #{email}
+        li #{phonenumber}
+        li #{birthday}
+        li #{notes}
+    br
+    a(href="/addresslist") Back

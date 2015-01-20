@@ -3,12 +3,13 @@ extends layout
 block content
   div(class="container")
     h2 Please log in
-    form(action="/login",method="post")
-      input(type="text",placeholder="username")
+    form(action="/login",method="post",data-ajax="false")
+      input(type="text",name="username",placeholder="username",autofocus)
       br
-      input(type="password",placeholder="password")
+      input(type="password",name="password",placeholder="password")
       br
       input(type="submit",value="LOG IN")
       br
-    p Not yet registered?
-    a(href="/register") Register here
+    p Not yet registered? 
+      a(href="/register") Click here
+    p(class="error") #{error}

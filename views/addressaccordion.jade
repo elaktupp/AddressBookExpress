@@ -1,0 +1,29 @@
+extends layout
+
+// NOT-IN-USE
+
+block content
+  // This is jQuery accordion
+  script().
+    $(function() {
+      $( "#accordion" ).accordion();
+    });
+  div(class="container")
+    h1 Address Book
+    a(href="/address") Add new address
+    br
+    a(href="/logout") Logout
+    if db_addresses.length == 0
+      p no addresses found
+    else
+      div(id="accordion",class="container")
+        each address in db_addresses
+          h3 #{address.name}
+          div
+            ul(class="addressdata")
+              li #{address.address}
+              li #{address.email}
+              li #{address.phonenumber}
+              li #{address.birthday}
+              li #{address.notes}
+  
