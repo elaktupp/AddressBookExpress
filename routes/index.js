@@ -24,6 +24,8 @@ router.address = function(req,res) {
 router.logout = function(req,res) {
 
     req.session.destroy();
+    res.status(301);
+    res.setHeader('location','/');
     res.render('index', {title: 'Address Book login', error: ''});
 }
 

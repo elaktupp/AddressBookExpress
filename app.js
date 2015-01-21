@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 // session is used to secure the pages
 var session = require('express-session');
 var app = express();
-// Must use before routes!
-app.use(session({secret:'h43jhnf34q384fh3kl0p034', resave: false, saveUninitialized: true}));
+// Set cookie maxAge to null. This makes sure that session is deleted when user closes the browser
+app.use(session({cookie:{path:'/', httpOnly:true, maxAge:null}, secret:'h43jhnf34q384fh3', resave: false, saveUninitialized: true}));
 // Database for users and addresses
 var indexRoutes = require('./routes/index');
 var dbRoutes = require('./routes/dbconnection');

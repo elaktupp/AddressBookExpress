@@ -2,7 +2,12 @@ extends layout
 
 block content
   div(class="container")
-    h1 Address Book 
+    table(id="backSide")
+      tr
+        td(id="leftSide") ADDRESSES
+        td(id="rightSide")
+          a(href="/logout") Logout
+    br
     if db_addresses.length == 0
       p  no addresses found
     else
@@ -12,7 +17,8 @@ block content
           li
             a(href="/details?id=#{address._id}") #{address.name}
     br
-    a(href="/address") Add new address
+    form(action="/address",method="post",data-ajax="false")
+      input(class="widebutton",type="submit",value="ADD NEW ADDRESS")
     br
-    a(href="/logout") Logout
-  
+    p(class="error") #{error_msg}
+    

@@ -2,13 +2,26 @@ extends layout
 
 block content
   div(class="container")
-    h1 Address Book
-    h3 #{name}
-      ul(class="addressdata")
-        li #{address}
-        li #{email}
-        li #{phonenumber}
-        li #{birthday}
-        li #{notes}
+    table(id="backSide")
+      tr
+        td(id="leftSide")
+          img(src="#{image}",width="128",height="128",alt="No photo")
+        td(id="rightSide")
+          a(href="/addresslist") Back
     br
-    a(href="/addresslist") Back
+    table(data-role='table',data-mode='reflow')
+      thead
+        th NAME:
+        th ADDRESS:
+        th E-MAIL:
+        th PHONE:
+        th BIRTHDAY:
+        th NOTES:
+      tbody
+        td #{name}
+        td #{address}
+        td #{email}
+        td #{phonenumber}
+        td #{birthday}
+        td #{notes}
+    br

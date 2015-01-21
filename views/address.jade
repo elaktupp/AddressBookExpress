@@ -4,11 +4,14 @@ block content
   // This is jQuery datepicker
   script().
     $(function() {
-      $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd", yearRange: "-150:+0", changeYear: true, changeMonth: true});
+      $( "#datepicker" ).datepicker({dateFormat: "D, dd M yy", showOn: 'focus', yearRange: "-150:+0", changeYear: true, changeMonth: true});
     });
   div(class="container")
-    h2 New address
-    a(href="/logout") Logout #{username}
+    table(id="backSide")
+      tr
+        td(id="leftSide") NEW ADDRES
+        td(id="rightSide")
+          a(href="/logout") Logout
     br
     form(action="/add_address",method="post",data-ajax="false")
       label Name
@@ -20,9 +23,11 @@ block content
       label Phone number
       input(type="text",name="phonenumber",placeholder="+358(0)551234567")
       label Birthday
-      input(type="text",name="birthday",id="datepicker")
+      input(type="text",readonly="true",name="birthday",id="datepicker")
       label Notes
       textarea(name="notes",placeholder="additional information")
       br
-      input(type="submit",value="SAVE")
+      input(class="widebutton",type="submit",value="SAVE")
+    br
+    p(class="error") #{error_msg}
     

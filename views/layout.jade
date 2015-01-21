@@ -2,12 +2,12 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
     // jQuery: Order of following files must be this because of latter file's dependency to the previous one
     link(rel='stylesheet', href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css")
     link(rel='stylesheet', href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css")
     script(src="http://code.jquery.com/jquery-1.11.1.min.js")
     script(src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js")
     script(src="//code.jquery.com/ui/1.11.2/jquery-ui.js")
+    link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block content

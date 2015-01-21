@@ -2,7 +2,12 @@ extends layout
 
 block content
   div(class="container")
-    h2 Registration
+    table(id="backSide")
+      tr
+        td(id="leftSide") REGISTRATION
+        td(id="rightSide")
+          a(href="/logout") Back
+    br
     form(action="/add_user",method="post",data-ajax="false")
       label User name
       input(type="text",name="username",placeholder="username",value="#{username}",autofocus)
@@ -11,9 +16,7 @@ block content
       label E-mail address
       input(type="email",name="email",placeholder="your@email.net",value="#{email}")
       br
-      input(type="submit",value="REGISTER")
-      
-    p(class="error") #{error_msg}
+      input(class="widebutton",type="submit",value="REGISTER")
     br
-    a(href="/logout") Back
+    p(class="error") #{error_msg}
     

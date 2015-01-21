@@ -42,8 +42,9 @@ var contact = new Schema({
     address:String,
     email:String,
     phonenumber:String,
-    birthday:Date,
+    birthday:String,
     notes:String,
+    image:String,
     user:String
 });
 
@@ -129,6 +130,13 @@ exports.loginUser = function(req,res) {
 //
 exports.addContact = function(req,res) {
     
+// TODO: Image selection and adding etc. is not yet implemented!
+// npm multer module should do the trick...
+    
+    var path = process.cwd()+"/images/unknown.png";
+    
+    console.log("*** PATH: "+path);
+    
     if (req.session.loggedIn) {
         console.log("*** addContact: "+req.body.birthday);
         // NOTE: Body content names come from address.jade, so they
@@ -138,8 +146,9 @@ exports.addContact = function(req,res) {
             address:req.body.address,
             email:req.body.email,
             phonenumber:req.body.phonenumber,
-            birthday:new Date(req.body.birthday),
+            birthday:new Date(req.body.birthday).toLocaleDateString(),
             notes:req.body.notes,
+            image:path,
             user:req.session.username
         });
 
@@ -188,6 +197,9 @@ exports.getAddressDetails = function(req,res) {
             if (err) {
                 res.render('error', {error: err, error_info: 'Database read failed!'});
             } else {
+                
+                console.log("*** getAddressDetails: "+data.image);
+                
                 res.render('details', data);
             }
         });
