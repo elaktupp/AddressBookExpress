@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  div(class="container")
+    table(id="backSide")
+      tr
+        td(id="leftSide") SEND EMAIL
+        td(id="rightSide")
+          a(href="/contact_list") Back
+    br
+    form(action="/send_email",method="post",data-ajax="false")
+      label Email to
+      input(type="text",readonly="true",name="recipient",value="#{recipient}")
+      label Subject
+      input(type="text",name="subject")
+      label Message
+      textarea(name="message")
+      br
+      input(type="hidden",name="hostUsername",value="#{hostUsername}")
+      input(type="hidden",name="hostPassword",value="#{hostPassword}")
+      input(type="hidden",name="host",value="#{host}")
+      input(type="hidden",name="ssl",value="#{ssl}")
+      input(class="widebutton",type="submit",value="SEND")
+      

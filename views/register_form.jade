@@ -15,6 +15,14 @@ block content
       input(type="password",name="password",placeholder="password",value="#{password}")
       label E-mail address
       input(type="email",name="email",placeholder="your@email.net",value="#{email}")
+      label E-mail host
+      input(type="text",name="host",placeholder="smtp.your-email-host.com",value="#{host}")
+      label E-mail uses SSL
+        input(type="checkbox",name="ssl",value="true")
+      label Host username
+      input(type="text",name="hostUsername",placeholder="your-host-username",value="#{hostUsername}")
+      label Host password
+      input(type="text",name="hostPassword",placeholder="your-host-username",value="#{hostPassword}")
       br
       input(class="widebutton",type="submit",value="REGISTER")
     br

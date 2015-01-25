@@ -16,6 +16,8 @@
     "stylus": "0.42.3",
     "mongoose": "3.8.x",
     "mongodb": "1.4.x",
-    "express-session": "1.10.x"
+    "express-session": "1.10.x",
+    "multer": "0.1.7",
+    "emailjs": "0.3.12"
   }
 }

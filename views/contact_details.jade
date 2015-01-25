@@ -5,11 +5,11 @@ block content
     table(id="backSide")
       tr
         td(id="leftSide")
-          img(src="#{image}",width="128",height="128",alt="No photo")
+          img(id="photo", src="/show_image?id=#{_id}", alt="No photo")
         td(id="rightSide")
-          a(href="/addresslist") Back
+          a(href="/contact_list") Back
     br
-    table(data-role='table',data-mode='reflow')
+    table(data-role='table', data-mode='reflow')
       thead
         th NAME:
         th ADDRESS:
@@ -20,8 +20,13 @@ block content
       tbody
         td #{name}
         td #{address}
-        td #{email}
+        td
+          a(href="/email?id=#{_id}") #{email}
         td #{phonenumber}
         td #{birthday}
         td #{notes}
     br
+    a(data-role="button", href="/edit?id=#{_id}") EDIT
+    a(id="delete", data-role="button", data-id='"#{_id}"') DELETE
+    script(src="/javascripts/application.js")
+    

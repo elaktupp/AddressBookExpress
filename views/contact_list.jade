@@ -15,9 +15,9 @@ block content
       ul(data-role="listview",data-filter='true',data-input='#test')
         each address in db_addresses
           li
-            a(href="/details?id=#{address._id}") #{address.name}
+            a(href="/contact_details?id=#{address._id}") #{address.name}
     br
-    form(action="/address",method="post",data-ajax="false")
+    form(action="/contact_form",method="post",data-ajax="false")
       input(class="widebutton",type="submit",value="ADD NEW ADDRESS")
     br
     p(class="error") #{error_msg}

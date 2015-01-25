@@ -9,13 +9,13 @@ router.get('/', function(req, res) {
     db.connectToDb(req,res);
 });
 
-router.register = function(req,res) {
-    res.render('register', {error_msg:'', username:'', password:'', email:''});
+router.displayRegisterForm = function(req,res) {
+    res.render('register_form', {error_msg:'', username:'', password:'', email:''});
 };
 
-router.address = function(req,res) {
+router.displayContactForm = function(req,res) {
     if (req.session.loggedIn) {
-        res.render('address', {});
+        res.render('contact_form', {});
     } else {
         res.render('index', {error: 'Please login first!'});
     }

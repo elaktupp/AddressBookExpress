@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  // This is jQuery datepicker
+  script().
+    $(function() {
+      $( "#datepicker" ).datepicker({dateFormat: "D, dd M yy", showOn: 'focus', yearRange: "-150:+0", changeYear: true, changeMonth: true});
+    });
+  div(class="container")
+    table(id="backSide")
+      tr
+        td(id="leftSide") EDIT ADDRESS
+        td(id="rightSide")
+          a(href="/contact_list") Back
+    br
+    form(action="/update_contact",method="post",data-ajax="false",enctype='multipart/form-data')
+      label Name
+      input(type="text",name="name",value="#{name}",autofocus)
+      label Street address
+      input(type="text",name="address",value="#{address}")
+      label E-mail address
+      input(type="email",name="email",value="#{email}")
+      label Phone number
+      input(type="text",name="phonenumber",value="#{phonenumber}")
+      label Birthday
+      input(type="text",readonly="true",name="birthday",id="datepicker",value="#{birthday}")
+      label Notes
+      textarea(name="notes") #{notes}
+      label Current photo
+      img(id="photo", src="/show_image?id=#{_id}", alt="No photo")
+      label Mark photo to be removed
+        input(type="checkbox",name="photoAction",value="remove")
+      label Choose new photo
+      input(type='file',name='image')
+      br
+      input(type="hidden",name='id',value='#{_id}')
+      input(class="widebutton",type="submit",value="SAVE CHANGES")
+    br
+    p(class="error") #{error_msg}
+    

@@ -11,9 +11,9 @@ block content
       tr
         td(id="leftSide") NEW ADDRES
         td(id="rightSide")
-          a(href="/logout") Logout
+          a(href="/contact_list") Back
     br
-    form(action="/add_address",method="post",data-ajax="false")
+    form(action="/add_contact",method="post",data-ajax="false",enctype='multipart/form-data')
       label Name
       input(type="text",name="name",placeholder="full name",autofocus)
       label Street address
@@ -26,6 +26,8 @@ block content
       input(type="text",readonly="true",name="birthday",id="datepicker")
       label Notes
       textarea(name="notes",placeholder="additional information")
+      label Choose photo
+      input(type='file',name='image')
       br
       input(class="widebutton",type="submit",value="SAVE")
     br
