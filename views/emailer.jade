@@ -16,9 +16,11 @@ block content
       label Message
       textarea(name="message")
       br
+      input(type="hidden",name="sender",value="#{sender}")
       input(type="hidden",name="hostUsername",value="#{hostUsername}")
       input(type="hidden",name="hostPassword",value="#{hostPassword}")
       input(type="hidden",name="host",value="#{host}")
       input(type="hidden",name="ssl",value="#{ssl}")
+      input(type="hidden",name="id",value="#{id}")
       input(class="widebutton",type="submit",value="SEND")
       
